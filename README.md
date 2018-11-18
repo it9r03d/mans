@@ -1,4 +1,4 @@
-# Manuals [mans]
+###### Manuals [mans]
 
 Offline pages of official documentation.
 Use command 'man command'.
