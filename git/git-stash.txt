@@ -1,4 +1,4 @@
-GIT-STASH(1)                               Git Manual                               GIT-STASH(1)
+GIT-STASH(1)                               Git Manual                              GIT-STASH(1)
 
 NAME
        git-stash - Stash the changes in a dirty working directory away
@@ -34,42 +34,43 @@ DESCRIPTION
        (e.g. the integer n is equivalent to stash@{n}).
 
 OPTIONS
-       push [-p|--patch] [-k|--[no-]keep-index] [-u|--include-untracked] [-a|--all] [-q|--quiet]
-       [-m|--message <message>] [--] [<pathspec>...]
-           Save your local modifications to a new stash entry and roll them back to HEAD (in the
-           working tree and in the index). The <message> part is optional and gives the
+       push [-p|--patch] [-k|--[no-]keep-index] [-u|--include-untracked] [-a|--all]
+       [-q|--quiet] [-m|--message <message>] [--] [<pathspec>...]
+           Save your local modifications to a new stash entry and roll them back to HEAD (in
+           the working tree and in the index). The <message> part is optional and gives the
            description along with the stashed state.
 
            For quickly making a snapshot, you can omit "push". In this mode, non-option
            arguments are not allowed to prevent a misspelled subcommand from making an unwanted
            stash entry. The two exceptions to this are stash -p which acts as alias for stash
-           push -p and pathspecs, which are allowed after a double hyphen -- for disambiguation.
+           push -p and pathspecs, which are allowed after a double hyphen -- for
+           disambiguation.
 
            When pathspec is given to git stash push, the new stash entry records the modified
-           states only for the files that match the pathspec. The index entries and working tree
-           files are then rolled back to the state in HEAD only for these files, too, leaving
-           files that do not match the pathspec intact.
+           states only for the files that match the pathspec. The index entries and working
+           tree files are then rolled back to the state in HEAD only for these files, too,
+           leaving files that do not match the pathspec intact.
 
            If the --keep-index option is used, all changes already added to the index are left
            intact.
 
            If the --include-untracked option is used, all untracked files are also stashed and
            then cleaned up with git clean, leaving the working directory in a very clean state.
-           If the --all option is used instead then the ignored files are stashed and cleaned in
-           addition to the untracked files.
+           If the --all option is used instead then the ignored files are stashed and cleaned
+           in addition to the untracked files.
 
            With --patch, you can interactively select hunks from the diff between HEAD and the
            working tree to be stashed. The stash entry is constructed such that its index state
-           is the same as the index state of your repository, and its worktree contains only the
-           changes you selected interactively. The selected changes are then rolled back from
-           your worktree. See the “Interactive Mode” section of git-add(1) to learn how to
+           is the same as the index state of your repository, and its worktree contains only
+           the changes you selected interactively. The selected changes are then rolled back
+           from your worktree. See the “Interactive Mode” section of git-add(1) to learn how to
            operate the --patch mode.
 
            The --patch option implies --keep-index. You can use --no-keep-index to override
            this.
 
-       save [-p|--patch] [-k|--[no-]keep-index] [-u|--include-untracked] [-a|--all] [-q|--quiet]
-       [<message>]
+       save [-p|--patch] [-k|--[no-]keep-index] [-u|--include-untracked] [-a|--all]
+       [-q|--quiet] [<message>]
            This option is deprecated in favour of git stash push. It differs from "stash push"
            in that it cannot take pathspecs, and any non-option arguments form the message.
 
@@ -87,10 +88,10 @@ OPTIONS
 
        show [<stash>]
            Show the changes recorded in the stash entry as a diff between the stashed contents
-           and the commit back when the stash entry was first created. When no <stash> is given,
-           it shows the latest one. By default, the command shows the diffstat, but it will
-           accept any format known to git diff (e.g., git stash show -p stash@{1} to view the
-           second most recent entry in patch form). You can use stash.showStat and/or
+           and the commit back when the stash entry was first created. When no <stash> is
+           given, it shows the latest one. By default, the command shows the diffstat, but it
+           will accept any format known to git diff (e.g., git stash show -p stash@{1} to view
+           the second most recent entry in patch form). You can use stash.showStat and/or
            stash.showPatch config variables to change the default behavior.
 
        pop [--index] [-q|--quiet] [<stash>]
@@ -107,19 +108,19 @@ OPTIONS
            (which are stored in the index, where you therefore can no longer apply the changes
            as they were originally).
 
-           When no <stash> is given, stash@{0} is assumed, otherwise <stash> must be a reference
-           of the form stash@{<revision>}.
+           When no <stash> is given, stash@{0} is assumed, otherwise <stash> must be a
+           reference of the form stash@{<revision>}.
 
        apply [--index] [-q|--quiet] [<stash>]
-           Like pop, but do not remove the state from the stash list. Unlike pop, <stash> may be
-           any commit that looks like a commit created by stash push or stash create.
+           Like pop, but do not remove the state from the stash list. Unlike pop, <stash> may
+           be any commit that looks like a commit created by stash push or stash create.
 
        branch <branchname> [<stash>]
            Creates and checks out a new branch named <branchname> starting from the commit at
            which the <stash> was originally created, applies the changes recorded in <stash> to
            the new working tree and index. If that succeeds, and <stash> is a reference of the
-           form stash@{<revision>}, it then drops the <stash>. When no <stash> is given, applies
-           the latest one.
+           form stash@{<revision>}, it then drops the <stash>. When no <stash> is given,
+           applies the latest one.
 
            This is useful if the branch on which you ran git stash push has changed enough that
            git stash apply fails due to conflicts. Since the stash entry is applied on top of
@@ -132,9 +133,9 @@ OPTIONS
            strategy).
 
        drop [-q|--quiet] [<stash>]
-           Remove a single stash entry from the list of stash entries. When no <stash> is given,
-           it removes the latest one. i.e.  stash@{0}, otherwise <stash> must be a valid stash
-           log reference of the form stash@{<revision>}.
+           Remove a single stash entry from the list of stash entries. When no <stash> is
+           given, it removes the latest one. i.e.  stash@{0}, otherwise <stash> must be a valid
+           stash log reference of the form stash@{<revision>}.
 
        create
            Create a stash entry (which is a regular commit object) and return its object name,
@@ -156,8 +157,8 @@ DISCUSSION
                  /    /
            -----H----I
 
-       where H is the HEAD commit, I is a commit that records the state of the index, and W is a
-       commit that records the state of the working tree.
+       where H is the HEAD commit, I is a commit that records the state of the index, and W is
+       a commit that records the state of the working tree.
 
 EXAMPLES
        Pulling into a dirty tree
@@ -203,8 +204,9 @@ EXAMPLES
                # ... continue hacking ...
 
        Testing partial commits
-           You can use git stash push --keep-index when you want to make two or more commits out
-           of the changes in the work tree, and you want to test each change before committing:
+           You can use git stash push --keep-index when you want to make two or more commits
+           out of the changes in the work tree, and you want to test each change before
+           committing:
 
                # ... hack hack hack ...
                $ git add --patch foo            # add just first part to the index
@@ -231,4 +233,4 @@ SEE ALSO
 GIT
        Part of the git(1) suite
 
-Git 2.17.1                                 10/05/2018                               GIT-STASH(1)
+Git 2.20.0                                 12/09/2018                              GIT-STASH(1)

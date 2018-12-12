@@ -1,4 +1,4 @@
-GITTUTORIAL(7)                             Git Manual                             GITTUTORIAL(7)
+GITTUTORIAL(7)                             Git Manual                            GITTUTORIAL(7)
 
 NAME
        gittutorial - A tutorial introduction to Git
@@ -145,8 +145,8 @@ MANAGING BRANCHES
 
            $ git checkout experimental
 
-       to switch to the experimental branch. Now edit a file, commit the change, and switch back
-       to the master branch:
+       to switch to the experimental branch. Now edit a file, commit the change, and switch
+       back to the master branch:
 
            (edit file)
            $ git commit -a
@@ -196,16 +196,16 @@ MANAGING BRANCHES
 
 USING GIT FOR COLLABORATION
        Suppose that Alice has started a new project with a Git repository in
-       /home/alice/project, and that Bob, who has a home directory on the same machine, wants to
-       contribute.
+       /home/alice/project, and that Bob, who has a home directory on the same machine, wants
+       to contribute.
 
        Bob begins with:
 
            bob$ git clone /home/alice/project myrepo
 
-       This creates a new directory "myrepo" containing a clone of Alice’s repository. The clone
-       is on an equal footing with the original project, possessing its own copy of the original
-       project’s history.
+       This creates a new directory "myrepo" containing a clone of Alice’s repository. The
+       clone is on an equal footing with the original project, possessing its own copy of the
+       original project’s history.
 
        Bob then makes some changes and commits them:
 
@@ -223,15 +223,15 @@ USING GIT FOR COLLABORATION
        has made her own changes in the meantime, then she may need to manually fix any
        conflicts.
 
-       The "pull" command thus performs two operations: it fetches changes from a remote branch,
-       then merges them into the current branch.
+       The "pull" command thus performs two operations: it fetches changes from a remote
+       branch, then merges them into the current branch.
 
-       Note that in general, Alice would want her local changes committed before initiating this
-       "pull". If Bob’s work conflicts with what Alice did since their histories forked, Alice
-       will use her working tree and the index to resolve conflicts, and existing local changes
-       will interfere with the conflict resolution process (Git will still perform the fetch but
-       will refuse to merge --- Alice will have to get rid of her local changes in some way and
-       pull again when this happens).
+       Note that in general, Alice would want her local changes committed before initiating
+       this "pull". If Bob’s work conflicts with what Alice did since their histories forked,
+       Alice will use her working tree and the index to resolve conflicts, and existing local
+       changes will interfere with the conflict resolution process (Git will still perform the
+       fetch but will refuse to merge --- Alice will have to get rid of her local changes in
+       some way and pull again when this happens).
 
        Alice can peek at what Bob did without merging first, using the "fetch" command; this
        allows Alice to inspect what Bob did, using a special symbol "FETCH_HEAD", in order to
@@ -269,8 +269,8 @@ USING GIT FOR COLLABORATION
        then finally unstash her work-in-progress on top of the resulting history.
 
        When you are working in a small closely knit group, it is not unusual to interact with
-       the same repository over and over again. By defining remote repository shorthand, you can
-       make it easier:
+       the same repository over and over again. By defining remote repository shorthand, you
+       can make it easier:
 
            alice$ git remote add bob /home/bob/myrepo
 
@@ -279,9 +279,9 @@ USING GIT FOR COLLABORATION
 
            alice$ git fetch bob
 
-       Unlike the longhand form, when Alice fetches from Bob using a remote repository shorthand
-       set up with git remote, what was fetched is stored in a remote-tracking branch, in this
-       case bob/master. So after this:
+       Unlike the longhand form, when Alice fetches from Bob using a remote repository
+       shorthand set up with git remote, what was fetched is stored in a remote-tracking
+       branch, in this case bob/master. So after this:
 
            alice$ git log -p master..bob/master
 
@@ -303,9 +303,9 @@ USING GIT FOR COLLABORATION
 
            bob$ git pull
 
-       Note that he doesn’t need to give the path to Alice’s repository; when Bob cloned Alice’s
-       repository, Git stored the location of her repository in the repository configuration,
-       and that location is used for pulls:
+       Note that he doesn’t need to give the path to Alice’s repository; when Bob cloned
+       Alice’s repository, Git stored the location of her repository in the repository
+       configuration, and that location is used for pulls:
 
            bob$ git config --get remote.origin.url
            /home/alice/project
@@ -318,8 +318,8 @@ USING GIT FOR COLLABORATION
            bob$ git branch -r
              origin/master
 
-       If Bob later decides to work from a different host, he can still perform clones and pulls
-       using the ssh protocol:
+       If Bob later decides to work from a different host, he can still perform clones and
+       pulls using the ssh protocol:
 
            bob$ git clone alice.org:/home/alice/project myrepo
 
@@ -329,9 +329,9 @@ USING GIT FOR COLLABORATION
        push changes to; see git-push(1) and gitcvs-migration(7).
 
 EXPLORING HISTORY
-       Git history is represented as a series of interrelated commits. We have already seen that
-       the git log command can list those commits. Note that first line of each git log entry
-       also gives a name for the commit:
+       Git history is represented as a series of interrelated commits. We have already seen
+       that the git log command can list those commits. Note that first line of each git log
+       entry also gives a name for the commit:
 
            $ git log
            commit c82a22c39cbc32576f64f5c6b3f24b99ea8149c7
@@ -383,9 +383,9 @@ EXPLORING HISTORY
        Be careful with that last command: in addition to losing any changes in the working
        directory, it will also remove all later commits from this branch. If this branch is the
        only branch containing those commits, they will be lost. Also, don’t use git reset on a
-       publicly-visible branch that other developers pull from, as it will force needless merges
-       on other developers to clean up the history. If you need to undo changes that you have
-       pushed, use git revert instead.
+       publicly-visible branch that other developers pull from, as it will force needless
+       merges on other developers to clean up the history. If you need to undo changes that you
+       have pushed, use git revert instead.
 
        The git grep command can search for strings in any version of your project, so
 
@@ -466,10 +466,10 @@ NEXT STEPS
            heavily on emailed patches.
 
        ·   git-bisect(1): When there is a regression in your project, one way to track down the
-           bug is by searching through the history to find the exact commit that’s to blame. Git
-           bisect can help you perform a binary search for that commit. It is smart enough to
-           perform a close-to-optimal search even in the case of complex non-linear history with
-           lots of merged branches.
+           bug is by searching through the history to find the exact commit that’s to blame.
+           Git bisect can help you perform a binary search for that commit. It is smart enough
+           to perform a close-to-optimal search even in the case of complex non-linear history
+           with lots of merged branches.
 
        ·   gitworkflows(7): Gives an overview of recommended workflows.
 
@@ -486,6 +486,6 @@ GIT
 
 NOTES
         1. The Git User’s Manual
-           file:///usr/share/doc/git/html/user-manual.html
+           file:///usr/share/doc/git-doc/user-manual.html
 
-Git 2.17.1                                 10/05/2018                             GITTUTORIAL(7)
+Git 2.20.0                                 12/09/2018                            GITTUTORIAL(7)
