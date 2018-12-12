@@ -1,10 +1,10 @@
-GITIGNORE(5)                               Git Manual                               GITIGNORE(5)
+GITIGNORE(5)                               Git Manual                              GITIGNORE(5)
 
 NAME
        gitignore - Specifies intentionally untracked files to ignore
 
 SYNOPSIS
-       $HOME/.config/git/ignore, $GIT_DIR/info/exclude, .gitignore
+       $XDG_CONFIG_HOME/git/ignore, $GIT_DIR/info/exclude, .gitignore
 
 DESCRIPTION
        A gitignore file specifies intentionally untracked files that Git should ignore. Files
@@ -21,8 +21,8 @@ DESCRIPTION
            parent directory, with patterns in the higher level files (up to the toplevel of the
            work tree) being overridden by those in lower level files down to the directory
            containing the file. These patterns match relative to the location of the .gitignore
-           file. A project normally includes such .gitignore files in its repository, containing
-           patterns for files generated as part of the project build.
+           file. A project normally includes such .gitignore files in its repository,
+           containing patterns for files generated as part of the project build.
 
        ·   Patterns read from $GIT_DIR/info/exclude.
 
@@ -31,8 +31,8 @@ DESCRIPTION
 
        Which file to place a pattern in depends on how the pattern is meant to be used.
 
-       ·   Patterns which should be version-controlled and distributed to other repositories via
-           clone (i.e., files that all developers will want to ignore) should go into a
+       ·   Patterns which should be version-controlled and distributed to other repositories
+           via clone (i.e., files that all developers will want to ignore) should go into a
            .gitignore file.
 
        ·   Patterns which are specific to a particular repository but which do not need to be
@@ -46,10 +46,10 @@ DESCRIPTION
            $XDG_CONFIG_HOME/git/ignore. If $XDG_CONFIG_HOME is either not set or empty,
            $HOME/.config/git/ignore is used instead.
 
-       The underlying Git plumbing tools, such as git ls-files and git read-tree, read gitignore
-       patterns specified by command-line options, or from files specified by command-line
-       options. Higher-level Git tools, such as git status and git add, use patterns from the
-       sources specified above.
+       The underlying Git plumbing tools, such as git ls-files and git read-tree, read
+       gitignore patterns specified by command-line options, or from files specified by
+       command-line options. Higher-level Git tools, such as git status and git add, use
+       patterns from the sources specified above.
 
 PATTERN FORMAT
        ·   A blank line matches no files, so it can serve as a separator for readability.
@@ -61,24 +61,26 @@ PATTERN FORMAT
 
        ·   An optional prefix "!" which negates the pattern; any matching file excluded by a
            previous pattern will become included again. It is not possible to re-include a file
-           if a parent directory of that file is excluded. Git doesn’t list excluded directories
-           for performance reasons, so any patterns on contained files have no effect, no matter
-           where they are defined. Put a backslash ("\") in front of the first "!" for patterns
-           that begin with a literal "!", for example, "\!important!.txt".
+           if a parent directory of that file is excluded. Git doesn’t list excluded
+           directories for performance reasons, so any patterns on contained files have no
+           effect, no matter where they are defined. Put a backslash ("\") in front of the
+           first "!" for patterns that begin with a literal "!", for example,
+           "\!important!.txt".
 
        ·   If the pattern ends with a slash, it is removed for the purpose of the following
            description, but it would only find a match with a directory. In other words, foo/
-           will match a directory foo and paths underneath it, but will not match a regular file
-           or a symbolic link foo (this is consistent with the way how pathspec works in general
-           in Git).
+           will match a directory foo and paths underneath it, but will not match a regular
+           file or a symbolic link foo (this is consistent with the way how pathspec works in
+           general in Git).
 
        ·   If the pattern does not contain a slash /, Git treats it as a shell glob pattern and
            checks for a match against the pathname relative to the location of the .gitignore
            file (relative to the toplevel of the work tree if not from a .gitignore file).
 
        ·   Otherwise, Git treats the pattern as a shell glob: "*" matches anything except "/",
-           "?" matches any one character except "/" and "[]" matches one character in a selected
-           range. See fnmatch(3) and the FNM_PATHNAME flag for a more detailed description.
+           "?" matches any one character except "/" and "[]" matches one character in a
+           selected range. See fnmatch(3) and the FNM_PATHNAME flag for a more detailed
+           description.
 
        ·   A leading slash matches the beginning of the pathname. For example, "/*.c" matches
            "cat-file.c" but not "mozilla-sha1/sha1.c".
@@ -98,7 +100,8 @@ PATTERN FORMAT
        ·   A slash followed by two consecutive asterisks then a slash matches zero or more
            directories. For example, "a/**/b" matches "a/b", "a/x/b", "a/x/y/b" and so on.
 
-       ·   Other consecutive asterisks are considered invalid.
+       ·   Other consecutive asterisks are considered regular asterisks and will match
+           according to the previous rules.
 
 NOTES
        The purpose of gitignore files is to ensure that certain files not tracked by Git remain
@@ -158,4 +161,4 @@ SEE ALSO
 GIT
        Part of the git(1) suite
 
-Git 2.17.1                                 10/05/2018                               GITIGNORE(5)
+Git 2.20.0                                 12/09/2018                              GITIGNORE(5)
