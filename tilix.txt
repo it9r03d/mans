@@ -1,0 +1,90 @@
+TILIX(1)                                     Tilix Commands                                    TILIX(1)
+
+NAME
+       tilix - Tiling GTK3 terminal emulator for GNOME
+
+SYNOPSIS
+       tilix [options]
+
+DESCRIPTION
+       tilix  is  an advanced GTK3 tiling terminal emulator designed to adhere to Gnome Human Interface
+       Guidelines.
+
+OPTIONS
+       The tilix application accepts the following command line parameters:
+
+       -h --help
+              Show help options.
+
+       -v --version
+              Show the version of Tilix as well as the versions of dependent components.
+
+       -w --working-directory=DIRECTORY
+              Set the working directory of the terminal.
+
+       -p --profile=PROFILE_NAME
+              Set the starting profile using the name of one of the existing profiles.  If  a  name  is
+              passed that does not correspond to an existing profile, the default profile will be used.
+
+       -t --title=TITLE
+              Set the title of the new terminal.
+
+       -s --session=SESSION_NAME
+              Open  the specified session file which has been previously saved. Session files are saved
+              from within Tilix, they store the complete layout of the session enabling the user to re-
+              load  it when required. Note that only the layout and layout options are saved, this will
+              not restore the terminal to where it was left off, rather new terminals are created.
+
+       -a --action=ACTION_NAME
+              Perform an action in the current Tilix instance, the following actions are supported:
+
+              session-add-right Adds a new terminal to the right of the current terminal.
+
+              session-add-down Adds a new terminal down from the current terminal.
+
+              app-new-session Creates a new Tilix session within the current window.
+
+              app-new-window Creates a new Tilix window.
+
+       -e --command=COMMAND
+              Execute all text after this parameter as a command, thus this parameter must be the  last
+              parameter.
+
+       --maximize
+              Maximize the terminal window.
+
+       --minimize
+              Minimize the terminal window.
+
+       --full-screen
+              Full-screen the terminal window.
+
+       --focus-window
+              Focus the existing window.
+
+       --new-process
+              Start  an additional Tilix instance as a new process. By default and as per GTK+ 3 guide‐
+              lines, Tilix maintains a single process that all windows belong to.  This  option  forces
+              Tilix  to start as a separate process. This is not recommended and is intended for debug‐
+              ging purposes only, using this option will prevent different Tilix windows from  communi‐
+              cating with each other.
+
+       --geometry=GEOMETRY
+              Set the window size; for example: 80x24, or 80x24+200+200 (COLSxROWS+X+Y).
+
+       -q --quake
+              Open a window in quake mode or toggle existing quake mode window visibility.
+
+       --preferences
+              Show the Tilix preferences dialog directly.
+
+SEE ALSO
+       None
+
+BUGS
+       See bugs at https://github.com/gnunn1/tilix/issues
+
+AUTHOR
+       Gerald Nunn and other contributors.
+
+1.4.0                                       26 December 2016                                   TILIX(1)
