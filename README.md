@@ -1,4 +1,4 @@
 Offline pages of official documentation.
 Use command 'man command'.
 
-[git](git/) | [shell](shell/) | [terminal](terminal/) | [package](package/)
+[git](git/) | [package](package/) | [shell](shell/) | [terminal](terminal/) 
